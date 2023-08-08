@@ -10,6 +10,7 @@
 
     <artifactId>crm</artifactId>
     <packaging>war</packaging>
+<!--    <packaging>jar</packaging>-->
 
     <name>App</name>
     <description>CRM project for Spring Boot</description>
