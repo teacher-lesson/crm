@@ -19,7 +19,7 @@ public class City extends BaseEntity<Long> {
     @Column(length = 45, unique = true)
     protected String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "country_id")
     protected Country country;
 
