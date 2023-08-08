@@ -8,25 +8,24 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Collections;
-import java.util.Set;
-
 @Data
 @NoArgsConstructor
-@ToString(exclude = "cities")
-@EqualsAndHashCode(exclude = "cities")
+@ToString(exclude = "country")
+@EqualsAndHashCode(exclude = "country")
 
 @Entity
-@Table(name = "countries")
-public class Country extends BaseEntity<Integer> {
+@Table(name = "cities")
+public class City extends BaseEntity<Long> {
     @Column(length = 45, unique = true)
     protected String name;
 
-    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
-    protected Set<City> cities = Collections.emptySet();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id")
+    protected Country country;
 
-    public Country(Integer id, String name) {
+    public City(Long id, String name, Country country) {
         super(id);
         this.name = name;
+        this.country = country;
     }
 }

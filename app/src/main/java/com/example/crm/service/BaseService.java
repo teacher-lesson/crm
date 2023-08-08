@@ -2,8 +2,8 @@ package com.example.crm.service;
 
 import com.example.crm.dao.BaseRepository;
 import com.example.crm.domain.BaseEntity;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public abstract class BaseService<E extends BaseEntity<ID>, ID extends Number> implements IService<E, ID> {
 
@@ -20,8 +20,8 @@ public abstract class BaseService<E extends BaseEntity<ID>, ID extends Number> i
     }
 
     @Override
-    public List<E> readAll() {
-        return getRepository().findAll();
+    public Page<E> readAll(Pageable pageable) {
+        return getRepository().findAll(pageable);
     }
 
     @Override

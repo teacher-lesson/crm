@@ -1,6 +1,5 @@
 package com.example.crm.service.location.impl;
 
-import com.example.crm.dao.BaseRepository;
 import com.example.crm.dao.location.CountryRepository;
 import com.example.crm.domain.location.Country;
 import com.example.crm.service.BaseService;
@@ -19,5 +18,10 @@ public class CountryServiceImpl extends BaseService<Country, Integer> implements
     @Autowired
     public CountryServiceImpl(CountryRepository repository) {
         this.repository = repository;
+    }
+
+    @Override
+    public Country readByName(String name) {
+        return repository.findByName(name);
     }
 }
