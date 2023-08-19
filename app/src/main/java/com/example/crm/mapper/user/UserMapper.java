@@ -1,5 +1,6 @@
 package com.example.crm.mapper.user;
 
+import com.example.crm.dao.user.UserRepository;
 import com.example.crm.domain.user.User;
 import com.example.crm.dto.user.UserDto;
 import com.example.crm.mapper.BaseMapper;
