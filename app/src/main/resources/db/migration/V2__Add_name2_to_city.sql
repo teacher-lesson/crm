@@ -1,0 +1,1 @@
+alter table cities add column name2 varchar(45);

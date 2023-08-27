@@ -7,11 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeRest {
 
-    @Value("#{${crm.app.name:Test} + 12}")
-    public String appName;
-
     @RequestMapping("/")
     public String home() {
-        return appName;
+        return "appName";
     }
 }
