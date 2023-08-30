@@ -43,7 +43,7 @@ public class CountryRest {
     }
 
     @GetMapping
-    public Page<CountryDto> readAll(@RequestParam int page, @RequestParam int size) {
+    public Page<CountryDto> readAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         PageRequest pageable = PageRequest.of(page, size);
         Page<Country> countries = service.readAll(pageable);
         return new PageImpl<>(
@@ -65,7 +65,7 @@ public class CountryRest {
     }
 
     @GetMapping("/full")
-    public List<CountryFullDto> fullReadAll(@RequestParam int page, @RequestParam int size) {
+    public List<CountryFullDto> fullReadAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         return service.readAll(PageRequest.of(page, size)).stream().map(
                 x -> new CountryFullDto(x.getId(), x.getName(), x.getCities().stream().map(c -> new CityDto(c.getId(), c.getName(), x.getId())).collect(Collectors.toSet()))
         ).collect(Collectors.toList());

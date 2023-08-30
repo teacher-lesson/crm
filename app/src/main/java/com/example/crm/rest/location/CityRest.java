@@ -44,7 +44,7 @@ public class CityRest {
 
 
     @GetMapping
-    public List<CityDto> readAll(@RequestParam int page, @RequestParam int size) {
+    public List<CityDto> readAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         return service.readAll(PageRequest.of(page, size)).stream().map(CityRest::createDto).collect(Collectors.toList());
     }
 
